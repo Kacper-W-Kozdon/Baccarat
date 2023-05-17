@@ -28,16 +28,39 @@ Game::Deal(int cards_to_deal)
         return 0;
     if (!(cards_to_deal % 2))
     {
-        Punto.push_back(Shoe.end());
+        Punto.push_back(Shoe[Shoe.size() - 1]);
         Shoe.pop_back();
+        cards_to_deal--;
         return 1;
     };
     if ((cards_to_deal % 2))
     {
-        Banco.push_back(Shoe.end());
+        Banco.push_back(Shoe[Shoe.size() - 1]);
         Shoe.pop_back();
+        cards_to_deal--;
         return 1;
     };
+
+}
+
+Game::Finish_dealing()
+{
+    return 0;
+}
+
+Game::Deal(const char deal_to)
+{
+    return 0;
+}
+
+Game::DealTern(int cards_to_deal)
+{
+    int test1 = cards_to_deal;
+    int test2 = cards_to_deal % 2;
+
+    !test1 ? Finish_dealing()
+        : test2 ? Deal("b") : Deal("p");
+
 
 }
 
