@@ -12,16 +12,16 @@ class Game
         int cards_to_deal;
 
         Game(int shoe_size);
-        Deal(int cards_to_deal);
-        DealTern(int cards_to_deal);
+        deal(int cards_to_deal);
+        dealTern(int cards_to_deal);
 
         virtual ~Game();
 
     protected:
 
     private:
-        Deal(char deal_to);
-        Finish_dealing();
+        deal(char deal_to);
+        finish_dealing();
         vector<int> Shoe;
         vector<int> Punto;
         vector<int> Banco;

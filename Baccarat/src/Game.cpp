@@ -22,7 +22,7 @@ Game::Game(int shoe_size)
     cout << "Card check: " << *(Shoe.begin() + 28) << "\n";//ctor
 }
 
-Game::Deal(int cards_to_deal)
+Game::deal(int cards_to_deal)
 {
     if (cards_to_deal == 0)
         return 0;
@@ -43,23 +43,25 @@ Game::Deal(int cards_to_deal)
 
 }
 
-Game::Finish_dealing()
+Game::finish_dealing()
 {
     return 0;
 }
 
-Game::Deal(const char deal_to)
+Game::deal(char deal_to)
 {
     return 0;
 }
 
-Game::DealTern(int cards_to_deal)
+Game::dealTern(int cards_to_deal)
 {
     int test1 = cards_to_deal;
     int test2 = cards_to_deal % 2;
+    char deal_to;
 
-    !test1 ? Finish_dealing()
-        : test2 ? Deal("b") : Deal("p");
+    !test1 ? finish_dealing()
+        : test2 ? deal_to = 'b' : deal_to = 'p';
+    deal(deal_to);
 
 
 }
