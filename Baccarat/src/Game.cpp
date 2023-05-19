@@ -24,22 +24,25 @@ Game::Game(int shoe_size)
 
 Game::deal(int cards_to_deal)
 {
-    if (cards_to_deal == 0)
+    while (cards_to_deal >= 0)
+    {
+        if (cards_to_deal == 0)
         return 0;
-    if (!(cards_to_deal % 2))
-    {
-        Punto.push_back(Shoe[Shoe.size() - 1]);
-        Shoe.pop_back();
-        cards_to_deal--;
-        return 1;
+        if (!(cards_to_deal % 2))
+        {
+            Punto.push_back(Shoe[Shoe.size() - 1]);
+            Shoe.pop_back();
+            cards_to_deal--;
+        };
+        if (cards_to_deal % 2)
+        {
+            Banco.push_back(Shoe[Shoe.size() - 1]);
+            Shoe.pop_back();
+            cards_to_deal--;
+        };
+
     };
-    if ((cards_to_deal % 2))
-    {
-        Banco.push_back(Shoe[Shoe.size() - 1]);
-        Shoe.pop_back();
-        cards_to_deal--;
-        return 1;
-    };
+
 
 }
 
