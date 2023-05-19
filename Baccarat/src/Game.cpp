@@ -43,6 +43,38 @@ Game::deal(int cards_to_deal)
 
 }
 
+Game::result()
+{
+    cout << "Banco: ";
+    while (!Banco.empty())
+    {
+
+        Banco.empty() ? cout << "    " : cout << Banco.back() << " ";
+        Shoe.insert(Shoe.begin(), {Banco.back()});
+        Banco.pop_back();
+    }
+
+    cout << "Punto: ";
+    while (!Punto.empty())
+    {
+        Punto.empty() ? cout << "    " : cout << Punto.back() << " ";
+        Shoe.insert(Shoe.begin(), {Punto.back()});
+        Punto.pop_back();
+
+    };
+    reshuffle();
+    cout << "\nShoe size: " << Shoe.size();
+
+}
+
+Game::reshuffle()
+{
+    auto rand = default_random_engine {};
+    shuffle(begin(Shoe), end(Shoe), rand);
+    cout << "\nCard check: " << *(Shoe.begin() + 28) << "\n";
+
+}
+
 Game::finish_dealing()
 {
     return 0;

@@ -14,6 +14,7 @@ class Game
         Game(int shoe_size);
         deal(int cards_to_deal);
         dealTern(int cards_to_deal);
+        result();
 
         virtual ~Game();
 
@@ -25,6 +26,7 @@ class Game
         vector<int> Shoe;
         vector<int> Punto;
         vector<int> Banco;
+        reshuffle();
 };
 
 #endif // GAME_H
