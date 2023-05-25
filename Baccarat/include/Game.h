@@ -12,6 +12,7 @@ class Game
         int cards_to_deal;
 
         Game(int shoe_size);
+        burn();
         deal(int cards_to_deal);
         dealTern(int cards_to_deal);
         result();
@@ -23,9 +24,15 @@ class Game
     private:
         deal(char deal_to);
         finish_dealing();
+        rules();
+        Punto_rules();
+        Banco_rules(const char* s);
+        int PuntoScore;
+        int BancoScore;
         vector<int> Shoe;
         vector<int> Punto;
         vector<int> Banco;
+        vector<int> Burnt;
         reshuffle();
 };
 
