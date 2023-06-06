@@ -44,7 +44,35 @@ Game::Punto_rules()
 
 Game::Banco_rules(const char* s = "n")
 {
-    return 0;
+    Punto.size() > 2 ?
+        : BancoScore > 5 ?
+            :
+                {
+                    Banco.push_back(Shoe.back());
+                    PuntoScore += Banco.back();
+                    Shoe.pop_back();
+                    rules();
+                    return 0;
+                }
+    Punto.size() <= 2 ?
+        : switch(BancoScore)
+            {
+                case (1 || 2):
+                    Banco.push_back(Shoe.back());
+                    PuntoScore += Banco.back();
+                    Shoe.pop_back();
+                    break;
+                case (3):
+                    break;
+                case (4):
+                    break;
+                case (5):
+                    break;
+                case (6):
+                    break;
+                case (7):
+                    break;
+            }
 }
 
 
