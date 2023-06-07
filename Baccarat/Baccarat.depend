@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1686154127 source:d:\dokumenty\baccarat\baccarat\baccarat_game.cpp
+1686157220 source:d:\dokumenty\baccarat\baccarat\baccarat_game.cpp
 	<iostream>
 	<vector>
 	"Game.h"
 
-1685028309 d:\dokumenty\baccarat\baccarat\include\game.h
+1686166718 d:\dokumenty\baccarat\baccarat\include\game.h
 	<vector>
 
-1686153451 source:d:\dokumenty\baccarat\baccarat\src\game.cpp
+1686166437 source:d:\dokumenty\baccarat\baccarat\src\game.cpp
 	"Game.h"
 	<iostream>
 	<vector>

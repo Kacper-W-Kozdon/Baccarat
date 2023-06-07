@@ -33,6 +33,7 @@ Game::Punto_rules()
     {
         Punto.push_back(Shoe.back());
         PuntoScore += Punto.back();
+        PuntoScore = PuntoScore % 10;
         Shoe.pop_back();
         Banco_rules("");
     }
@@ -52,7 +53,6 @@ Game::Banco_rules(const char* s = "n")
                 Banco.push_back(Shoe.back());
                 PuntoScore += Banco.back();
                 Shoe.pop_back();
-                rules();
             };
 
 
@@ -100,6 +100,8 @@ Game::Banco_rules(const char* s = "n")
                 case (7):
                     break;
             }
+
+            BancoScore = BancoScore % 10;
 }
 
 
@@ -131,6 +133,7 @@ Game::rules()
 
 Game::deal(int cards_to_deal)
 {
+    cout << "\nDealing\n";
     while (cards_to_deal >= 0)
     {
         if (cards_to_deal == 0)
@@ -154,6 +157,8 @@ Game::deal(int cards_to_deal)
 
 Game::burn()
 {
+    cout << "\nBurning\n";
+    cout << "\nShoe- last: " << Shoe.back() << "\n";
     Burnt.push_back(Shoe[Shoe.size() - 1]);
     cards_to_deal = Burnt.back() <= 10 ? Burnt.back() : 10;
     Shoe.pop_back();
@@ -170,7 +175,7 @@ Game::burn()
     cards_to_deal = 4;
 }
 
-Game::result()
+Game& Game::result()
 {
     rules();
 
@@ -192,15 +197,18 @@ Game::result()
         Punto.pop_back();
     };
 
-    reshuffle();
+    &(*this).reshuffle();
+    cout << "\nShoe- last: " << Shoe.back() << "\n";
     cards_to_deal = 0;
 
     cout << "\nPunto score: " << PuntoScore << "    Banco score: " << BancoScore;
     cout << "\nShoe size: " << Shoe.size() << ", " << (Shoe.size() / 52) << " decks\n";
-
+    BancoScore = 0;
+    PuntoScore = 0;
+    return *this;
 }
 
-Game::reshuffle()
+Game& Game::reshuffle()
 {
     unsigned int seed = chrono::steady_clock::now().time_since_epoch().count();
     auto rand = default_random_engine {};
@@ -213,6 +221,9 @@ Game::reshuffle()
 
     shuffle(begin(Shoe), end(Shoe), rand);
     cout << "\nCard check: " << *(Shoe.begin() + 28) << "\n";
+    cout << "\nShoe- last: " << Shoe.back() << "\n";
+    this->Shoe = Shoe;
+    return *this;
 }
 
 Game::finish_dealing()

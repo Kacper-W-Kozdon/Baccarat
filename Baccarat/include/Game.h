@@ -15,7 +15,8 @@ class Game
         burn();
         deal(int cards_to_deal);
         dealTern(int cards_to_deal);
-        result();
+        Game& result();
+
 
         virtual ~Game();
 
@@ -33,7 +34,7 @@ class Game
         vector<int> Punto;
         vector<int> Banco;
         vector<int> Burnt;
-        reshuffle();
+        Game &reshuffle();
 };
 
 #endif // GAME_H

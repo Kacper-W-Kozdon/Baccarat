@@ -3,7 +3,7 @@
 #include "Game.h"
 using namespace std;
 
-void gameplay_loop(Game game1)
+void gameplay_loop(Game& game1)
 {
     game1.burn();
     game1.deal(game1.cards_to_deal);
