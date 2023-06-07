@@ -157,8 +157,6 @@ Game::deal(int cards_to_deal)
 
 Game::burn()
 {
-    cout << "\nBurning\n";
-    cout << "\nShoe- last: " << Shoe.back() << "\n";
     Burnt.push_back(Shoe[Shoe.size() - 1]);
     cards_to_deal = Burnt.back() <= 10 ? Burnt.back() : 10;
     Shoe.pop_back();
@@ -198,7 +196,6 @@ Game& Game::result()
     };
 
     &(*this).reshuffle();
-    cout << "\nShoe- last: " << Shoe.back() << "\n";
     cards_to_deal = 0;
 
     cout << "\nPunto score: " << PuntoScore << "    Banco score: " << BancoScore;
@@ -220,8 +217,6 @@ Game& Game::reshuffle()
     };
 
     shuffle(begin(Shoe), end(Shoe), rand);
-    cout << "\nCard check: " << *(Shoe.begin() + 28) << "\n";
-    cout << "\nShoe- last: " << Shoe.back() << "\n";
     this->Shoe = Shoe;
     return *this;
 }
