@@ -44,31 +44,57 @@ Game::Punto_rules()
 
 Game::Banco_rules(const char* s = "n")
 {
-    Punto.size() > 2 ?
-        : BancoScore > 5 ?
-            :
-                {
-                    Banco.push_back(Shoe.back());
-                    PuntoScore += Banco.back();
-                    Shoe.pop_back();
-                    rules();
-                    return 0;
-                }
-    Punto.size() <= 2 ?
-        : switch(BancoScore)
+    if (Punto.size() <= 2)
+        if (BancoScore <= 5)
             {
-                case (1 || 2):
+                Banco.push_back(Shoe.back());
+                PuntoScore += Banco.back();
+                Shoe.pop_back();
+                rules();
+                return 0;
+            };
+
+
+
+    if (Punto.size() > 2)
+            switch(BancoScore)
+            {
+                case (0 || 1 || 2):
                     Banco.push_back(Shoe.back());
                     PuntoScore += Banco.back();
                     Shoe.pop_back();
                     break;
                 case (3):
+                    if (Punto.back() % 10 != 8)
+                    {
+                        Banco.push_back(Shoe.back());
+                        PuntoScore += Banco.back();
+                        Shoe.pop_back();
+                    };
                     break;
                 case (4):
+                    if (Punto.back() % 10 == 2 || Punto.back() % 10 == 3 || Punto.back() % 10 == 4 || Punto.back() % 10 == 5 || Punto.back() % 10 == 6 || Punto.back() % 10 == 7)
+                    {
+                        Banco.push_back(Shoe.back());
+                        PuntoScore += Banco.back();
+                        Shoe.pop_back();
+                    };
                     break;
                 case (5):
+                    if (Punto.back() % 10 == 4 || Punto.back() % 10 == 5 || Punto.back() % 10 == 6 || Punto.back() % 10 == 7)
+                    {
+                        Banco.push_back(Shoe.back());
+                        PuntoScore += Banco.back();
+                        Shoe.pop_back();
+                    };
                     break;
                 case (6):
+                    if (Punto.back() % 10 == 6 || Punto.back() % 10 == 7)
+                    {
+                        Banco.push_back(Shoe.back());
+                        PuntoScore += Banco.back();
+                        Shoe.pop_back();
+                    };
                     break;
                 case (7):
                     break;
@@ -81,10 +107,10 @@ Game::Banco_rules(const char* s = "n")
 Game::rules()
 {
     for (int i = 0; i < max(Punto.size(), Banco.size()); i++)
-        {
-            Banco[i] ? BancoScore += Banco[i] : BancoScore += 0;
-            Punto[i] ? PuntoScore += Punto[i] : PuntoScore += 0;
-        };
+    {
+        Banco[i] ? BancoScore += Banco[i] : BancoScore += 0;
+        Punto[i] ? PuntoScore += Punto[i] : PuntoScore += 0;
+    };
 
     PuntoScore = PuntoScore % 10;
     BancoScore = BancoScore % 10;
