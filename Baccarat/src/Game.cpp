@@ -53,7 +53,6 @@ Game::Banco_rules(const char* s = "n")
                 PuntoScore += Banco.back();
                 Shoe.pop_back();
                 rules();
-                return 0;
             };
 
 
@@ -135,7 +134,7 @@ Game::deal(int cards_to_deal)
     while (cards_to_deal >= 0)
     {
         if (cards_to_deal == 0)
-            return 0;
+            break;
 
         if (!(cards_to_deal % 2))
         {
@@ -197,19 +196,21 @@ Game::result()
     cards_to_deal = 0;
 
     cout << "\nPunto score: " << PuntoScore << "    Banco score: " << BancoScore;
-    cout << "\nShoe size: " << Shoe.size();
+    cout << "\nShoe size: " << Shoe.size() << ", " << (Shoe.size() / 52) << " decks\n";
 
 }
 
 Game::reshuffle()
 {
+    unsigned int seed = chrono::steady_clock::now().time_since_epoch().count();
+    auto rand = default_random_engine {};
+    rand.seed(seed);
     while (!Burnt.empty())
     {
         Shoe.insert(Shoe.begin(), {Burnt.back()});
         Burnt.pop_back();
     };
 
-    auto rand = default_random_engine {};
     shuffle(begin(Shoe), end(Shoe), rand);
     cout << "\nCard check: " << *(Shoe.begin() + 28) << "\n";
 }
@@ -219,7 +220,7 @@ Game::finish_dealing()
     return 0;
 }
 
-Game::deal(char deal_to)
+Game::deal(char)
 {
     return 0;
 }
