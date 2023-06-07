@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include<chrono>
 using namespace std;
 
 Game::Game(int shoe_size)
@@ -18,8 +19,9 @@ Game::Game(int shoe_size)
 
     cout << "Starting the game \n";
     cout << "Shoe size: " << 1. * Shoe.size() / 52 << " decks \n";
-
+    unsigned int seed = chrono::steady_clock::now().time_since_epoch().count();
     auto rand = default_random_engine {};
+    rand.seed(seed);
     shuffle(begin(Shoe), end(Shoe), rand);
 
     cout << "Card check: " << *(Shoe.begin() + 28) << "\n";//ctor

@@ -7,10 +7,11 @@
 1685028309 d:\dokumenty\baccarat\baccarat\include\game.h
 	<vector>
 
-1685028489 source:d:\dokumenty\baccarat\baccarat\src\game.cpp
+1686151739 source:d:\dokumenty\baccarat\baccarat\src\game.cpp
 	"Game.h"
 	<iostream>
 	<vector>
 	<algorithm>
 	<random>
+	<chrono>
 
